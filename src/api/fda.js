@@ -11,8 +11,7 @@ export class ApiError extends Error {
 const searchCache = new Map();
 const detailCache = new Map();
 
-export const normalizeQuery = (q) =>
-  q.trim().toLowerCase().replace(/\s+/g, " ");
+export const normalizeQuery = (q) => q.trim().toLowerCase().replace(/\s+/g, " ");
 
 export const getCachedSearch = (key) => searchCache.get(key);
 export const getCachedMedicine = (id) => detailCache.get(id);

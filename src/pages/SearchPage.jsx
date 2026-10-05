@@ -6,8 +6,6 @@ import { LoadingGrid, EmptyState, ErrorState } from "../components/StatusViews.j
 import useDebounce from "../hooks/useDebounce.js";
 import useMedicineSearch, { MIN_QUERY_LENGTH } from "../hooks/useMedicineSearch.js";
 
-const SUGGESTIONS = ["Advil", "Tylenol", "Aspirin", "Motrin", "Zyrtec", "Claritin"];
-
 export default function SearchPage() {
   const [params, setParams] = useSearchParams();
   const [text, setText] = useState(() => params.get("q") ?? "");
@@ -45,16 +43,6 @@ export default function SearchPage() {
               ? `Type at least ${MIN_QUERY_LENGTH} characters.`
               : "Enter a brand name to see matching FDA drug labels."}
           </EmptyState>
-        )}
-        {status === "idle" && (
-          <p className="suggestions">
-            Try:{" "}
-            {SUGGESTIONS.map((s) => (
-              <button key={s} type="button" className="chip" onClick={() => pick(s)}>
-                {s}
-              </button>
-            ))}
-          </p>
         )}
         {status === "loading" && <LoadingGrid />}
         {status === "error" && <ErrorState error={error} onRetry={retry} />}
