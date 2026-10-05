@@ -2,6 +2,26 @@
 
 Search FDA drug labels by brand name (openFDA `drug/label.json`), browse result cards, and open a detail page.
 
+## Live demo
+
+https://medicine-search-pearl.vercel.app/
+
+## Manually verified
+
+- Search for a known brand (e.g. Advil), then open a card and use "Back to results".
+- Unknown brand shows "No results found".
+- Refreshing a detail page loads it directly.
+- Offline: error state appears with a working "Try again".
+- Layout checked on a narrow mobile viewport.
+
+## With another hour
+
+- Wildcard/prefix search so partial names like "adv" match.
+- Pagination or "load more" beyond the first 20 results.
+- Cache expiry, and optionally persist the cache in sessionStorage.
+- Tests for the API layer and the missing-field helpers.
+- Pass the card data through a shared `useReducer` store only if more screens need it.
+
 ## Run
 
 ```bash
